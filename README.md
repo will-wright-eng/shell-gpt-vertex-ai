@@ -2,19 +2,19 @@
 
 ## models
 
+| Model name | Description | Model properties |
 | --- | --- | --- |
-Model name | Description | Model properties |
-text-bison-32k | Fine-tuned to follow natural language instructions and is suitable for a variety of language tasks. | Max input and output tokens combined: 32k; Training data: Up to Aug 2023 |
-chat-bison-32k | Fine-tuned for multi-turn conversation use cases. | Max input and output tokens combined: 32k; Training data: Up to Aug 2023; Max turns : 2500 |
-code-bison-32k | A model fine-tuned to generate code based on a natural language description of the desired code. For example, it can generate a unit test for a function. | Max input and output tokens combined: 32k |
-codechat-bison-32k | A model fine-tuned for chatbot conversations that help with code-related questions. | Max input and output tokens combined: 32k |
-text-bison | Fine-tuned to follow natural language instructions and is suitable for a variety of language tasks, such as: Classification, Sentiment Analysis, Entity extraction, Extractive Question Answering, Summarization, Re-writing text in a different style, Ad copy generation, Concept ideation | Max input tokens: 8192; Max output tokens: 1024; Training data: Up to Feb 2023 |
-textembedding-gecko | Returns model embeddings for text inputs. | 3072 input tokens and outputs 768-dimensional vector embeddings. |
-textembedding-gecko-multilingual | Returns model embeddings for text inputs which support over 100 languages | 3072 input tokens and outputs 768-dimensional vector embeddings. |
-chat-bison | Fine-tuned for multi-turn conversation use cases. | Max input tokens: 8192; Max output tokens: 1024; Training data: Up to Feb 2023; Max turns : 2500 |
-code-bison | A model fine-tuned to generate code based on a natural language description of the desired code. For example, it can generate a unit test for a function. | Max input tokens: 6144; Max output tokens: 1024 |
-codechat-bison | A model fine-tuned for chatbot conversations that help with code-related questions. | Max input tokens: 6144; Max output tokens: 1024 |
-code-gecko | A model fine-tuned to suggest code completion based on the context in code that's written. | Max input tokens: 2048; Max output tokens: 64 |
+| text-bison-32k | Fine-tuned to follow natural language instructions and is suitable for a variety of language tasks. | Max input and output tokens combined: 32k; Training data: Up to Aug 2023 |
+| chat-bison-32k | Fine-tuned for multi-turn conversation use cases. | Max input and output tokens combined: 32k; Training data: Up to Aug 2023; Max turns : 2500 |
+| code-bison-32k | A model fine-tuned to generate code based on a natural language description of the desired code. For example, it can generate a unit test for a function. | Max input and output tokens combined: 32k |
+| codechat-bison-32k | A model fine-tuned for chatbot conversations that help with code-related questions. | Max input and output tokens combined: 32k |
+| text-bison | Fine-tuned to follow natural language instructions and is suitable for a variety of language tasks, such as: Classification, Sentiment Analysis, Entity extraction, Extractive Question Answering, Summarization, Re-writing text in a different style, Ad copy generation, Concept ideation | Max input tokens: 8192; Max output tokens: 1024; Training data: Up to Feb 2023 |
+| textembedding-gecko | Returns model embeddings for text inputs. | 3072 input tokens and outputs 768-dimensional vector embeddings. |
+| textembedding-gecko-multilingual | Returns model embeddings for text inputs which support over 100 languages | 3072 input tokens and outputs 768-dimensional vector embeddings. |
+| chat-bison | Fine-tuned for multi-turn conversation use cases. | Max input tokens: 8192; Max output tokens: 1024; Training data: Up to Feb 2023; Max turns : 2500 |
+| code-bison | A model fine-tuned to generate code based on a natural language description of the desired code. For example, it can generate a unit test for a function. | Max input tokens: 6144; Max output tokens: 1024 |
+| codechat-bison | A model fine-tuned for chatbot conversations that help with code-related questions. | Max input tokens: 6144; Max output tokens: 1024 |
+| code-gecko | A model fine-tuned to suggest code completion based on the context in code that's written. | Max input tokens: 2048; Max output tokens: 64 |
 
 - [Available models in Generative AI Studio | Vertex AI | Google Cloud](https://cloud.google.com/vertex-ai/docs/generative-ai/learn/models?authuser=1)
 
