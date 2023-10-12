@@ -19,6 +19,7 @@ isort = "^5.10.1"
 black = "^22.6.0"
 
 # Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
+pytest = "^7.4.2"
 [tool.poetry.scripts]
 "vgpt" = "vgpt:cli"
 
@@ -28,3 +29,7 @@ profile = "black"
 [build-system]
 requires = ["poetry-core>=1.1.0a6"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.codespell]
+skip = '.git,venv'
+# ignore-words-list = ''
