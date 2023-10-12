@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "vgpt"
+version = "0.1.0"
+description = "a command line interface for google cloud platform' 's vertex ai chat bot"
+authors = ["Will Wright <will.wright.engineering@gmail.com>"]
+license = "GNU GPL v3.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+typer = "^0.6.1"
+toml = "^0.10.2"
+python-dotenv = "^1.0.0"
+requests = "^2.31.0"
+google-auth = "^2.23.3"
+
+[tool.poetry.group.dev.dependencies]
+isort = "^5.10.1"
+black = "^22.6.0"
+
+# Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
+pytest = "^7.4.2"
+[tool.poetry.scripts]
+"vgpt" = "vgpt:cli"
+
+[tool.isort]
+profile = "black"
+
+[build-system]
+requires = ["poetry-core>=1.1.0a6"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.codespell]
+skip = '.git,venv'
+# ignore-words-list = ''
