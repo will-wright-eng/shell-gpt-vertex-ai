@@ -8,8 +8,8 @@ import toml
 import typer
 from typer import echo
 
-from vgpt.config import Config
 from vgpt.gcp import get_session
+from vgpt.config import Config
 
 app = typer.Typer(add_completion=False)
 
@@ -41,10 +41,6 @@ def hello(name: str) -> None:
     first endpoint
     """
     print(f"Hello, {name.title()}!")
-    return
-
-# def send_fxn():
-
 
 
 @app.command()
@@ -74,11 +70,8 @@ def send(
         None,
         help="System role for GPT model.",
         rich_help_panel="Role Options",
-    )
+    ),
 ) -> None:
-    """
-    first endpoint
-    """
     stdin_passed = not sys.stdin.isatty()
 
     if stdin_passed:
@@ -116,6 +109,7 @@ def send(
         data=json.dumps(body),
     )
     print(json.dumps(response.json(), indent=2))
+
 
 @app.command()
 def config_test() -> None:
