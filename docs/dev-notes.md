@@ -25,7 +25,7 @@
 - [Available models in Generative AI Studio | Vertex AI | Google Cloud](https://cloud.google.com/vertex-ai/docs/generative-ai/learn/models?authuser=1)
 - [Reinforcement learning from human feedback - Wikipedia](https://en.wikipedia.org/wiki/Reinforcement_learning_from_human_feedback)
 
-## inital test env
+## initial test env
 
 ```bash
 conda create -n shell-gpt-vertex-ai python=3.10 -y
