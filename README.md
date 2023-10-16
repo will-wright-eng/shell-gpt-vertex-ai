@@ -8,7 +8,7 @@
 
 ## Summary
 
-**a command line interface for google cloud platform' 's vertex ai chat bot**
+**a command line interface for google cloud platform's vertex ai chat bot**
 
 - generated using: [will-wright-eng/cookiecutter-typer-cli](https://github.com/will-wright-eng/cookiecutter-typer-cli)
 
