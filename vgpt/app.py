@@ -4,29 +4,11 @@ import json
 import typer
 
 from vgpt.gcp import get_session
-from vgpt.cache import cache, get_cache_list, get_cache_entry
 from vgpt.roles import build_role_prompt
 from vgpt.config import Config, config_flow
 from vgpt.version import version_callback
 
-# from cachetools import cached, TTLCache
 
-
-# # Cache with a maximum size of 100 entries and a time-to-live of 300 seconds
-# cache = TTLCache(maxsize=100, ttl=300)
-
-# def get_cache_list(cache, chat_session):
-#     res = []
-#     for chat_session in cache:
-#         res.append(chat_session)
-#         typer.echo(chat_session)
-#     return res
-
-# def get_cache_entry(cache, chat_session):
-#     typer.echo(cache[chat_session])
-
-
-@cached(cache)
 def main(
     ctx: typer.Context,
     version: bool = typer.Option(
@@ -67,23 +49,6 @@ def main(
         True,
         help="Cache completion results.",
     ),
-    chat: str = typer.Option(
-        None,
-        help="Follow conversation with id, " 'use "temp" for quick session.',
-        rich_help_panel="Chat Options",
-    ),
-    show_chat: str = typer.Option(
-        None,
-        help="Show all messages from provided chat id.",
-        callback=get_cache_entry,
-        rich_help_panel="Chat Options",
-    ),
-    list_chats: bool = typer.Option(
-        False,
-        help="List all existing chat ids.",
-        callback=get_cache_list,
-        rich_help_panel="Chat Options",
-    ),
 ) -> None:
     if config:
         config_flow()
@@ -94,20 +59,8 @@ def main(
     if stdin_passed:
         prompt = f"{prompt or ''}\n---\n{sys.stdin.read()}\n---"
 
+    prompt = build_role_prompt(prompt, role_name=role)
     typer.echo(prompt)
-
-    # if chat and chat not in cache:
-    #     prompt = build_role_prompt(prompt, role_name=role)
-    #     msg_list = {
-    #         "author": "user",
-    #         "content": prompt
-    #     }
-    # elif chat and chat in cache:
-    #     msg = {
-    #         "author": "user",
-    #         "content": prompt
-    #     }
-    #     msg_list = cache[chat].append(msg)
 
     body = {
         "instances": [
@@ -144,13 +97,6 @@ def main(
     data = response.json()
     results = data.get("predictions")[0].get("candidates")[0].get("content").strip()
     typer.echo(results)
-
-    # if results and (chat in cache):
-    #     msg = {
-    #         "author": "bot",
-    #         "content": results
-    #     }
-    #     cache[chat] = msg_list.append(msg)
 
 
 def entry_point() -> None:
