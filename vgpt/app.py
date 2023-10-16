@@ -33,7 +33,7 @@ def main(
     ),
     config: bool = typer.Option(
         False,
-        help="Config flow for setup and overwite",
+        help="Config flow for setup and overwrite",
         rich_help_panel="Configure CLI",
     ),
     stream: bool = typer.Option(
