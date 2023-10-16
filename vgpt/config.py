@@ -1,7 +1,9 @@
 import os
 from pathlib import Path
 
+import typer
 import dotenv
+from typer import echo
 
 from vgpt.log import Log
 
@@ -16,7 +18,10 @@ class Config:
             "API_ENDPOINT": {"name": "API_ENDPOINT", "note": "chat bot endpoint url"},
             "PROJECT_ID": {"name": "PROJECT_ID", "note": "gcp project"},
             "MODEL_ID": {"name": "MODEL_ID", "note": "chat bot model"},
-            "GOOGLE_APPLICATION_CREDENTIALS": {"name": "GOOGLE_APPLICATION_CREDENTIALS", "note": "$HOME/.config/gcloud/application_default_credentials.json"},
+            "GOOGLE_APPLICATION_CREDENTIALS": {
+                "name": "GOOGLE_APPLICATION_CREDENTIALS",
+                "note": "$HOME/.config/gcloud/application_default_credentials.json",
+            },
         }
         self.keys = [ele.get("name") for key, ele in self.keys_dict.items()]
         if not self.check_exists():
@@ -60,3 +65,47 @@ class Config:
         with self.dotenv_path.open(mode="a") as f:
             for key, value in env_vars.items():
                 f.write(f"{key}={value}\n")
+
+
+def write_config(config) -> None:
+    config.dotenv_path.unlink(missing_ok=True)
+    config.dotenv_path.touch()
+    echo()
+    env_vars = {}
+    config_dict = config.configs
+
+    for key, val in config.keys_dict.items():
+        key_name = val.get("name")
+        key_note = val.get("note")
+
+        if config_dict:
+            res_default = config_dict.get(key)
+        else:
+            res_default = None
+
+        res = typer.prompt(f"{key_name} ({key_note})", type=str, default=res_default)
+        env_vars[key] = res
+
+    config.write_env_vars(env_vars)
+    config.print_current_config()
+    return
+
+
+def config_flow() -> None:
+    """
+    Configures the application
+    """
+    config = Config()
+
+    if config.check_exists():
+        config.load_env()
+        config.print_current_config()
+
+        if typer.confirm("Would you like to overwrite these settings?", default=False):
+            echo("Overwriting")
+            write_config(config)
+    else:
+        write_config(config)
+
+    echo("Configuration complete.")
+    return
