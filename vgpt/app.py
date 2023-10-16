@@ -20,7 +20,7 @@ def main(
         help="The prompt to generate completions for.",
     ),
     temperature: float = typer.Option(
-        0.2,
+        1.0,
         min=0.0,
         max=2.0,
         help="Randomness of generated output.",
@@ -72,7 +72,6 @@ def main(
         ],
         "parameters": {
             "candidateCount": 1,
-            "maxOutputTokens": 256,
             "temperature": temperature,
             "topP": top_probability,
             "topK": 40,
@@ -95,6 +94,9 @@ def main(
         stream=stream,
     )
     data = response.json()
+    typer.echo()
+    typer.echo(json.dumps(data, indent=2))
+    typer.echo()
     results = data.get("predictions")[0].get("candidates")[0].get("content").strip()
     typer.echo(results)
 
