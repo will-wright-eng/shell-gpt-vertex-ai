@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vgpt"
-version = "0.1.0"
+version = "0.2.0"
 description = "a command line interface for google cloud platform' 's vertex ai chat bot"
 authors = ["Will Wright <will.wright.engineering@gmail.com>"]
 license = "GNU GPL v3.0"
