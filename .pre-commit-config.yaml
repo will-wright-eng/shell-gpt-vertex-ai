@@ -58,3 +58,7 @@ repos:
     - flake8-simplify
     verbose: true
     entry: bash -c 'flake8 "$@" || true' --
+- repo: https://github.com/codespell-project/codespell
+  rev: v2.2.5
+  hooks:
+  - id: codespell
