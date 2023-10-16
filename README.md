@@ -86,4 +86,3 @@ pre-commit install
 
 - [PyPI Package](https://pypi.org/project/vgpt)
 - Based on cookiecutter template [will-wright-eng/click-app](https://github.com/will-wright-eng/click-app)
-

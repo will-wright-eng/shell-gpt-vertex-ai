@@ -1,5 +1,6 @@
 import pytest
 from typer.testing import CliRunner
+
 from vgpt.app import app
 
 runner = CliRunner()

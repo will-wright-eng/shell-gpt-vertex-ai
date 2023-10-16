@@ -51,10 +51,14 @@ repos:
   rev: 6.0.0
   hooks:
   - id: flake8
-    args: ['--ignore=E999,W504,W503,E501']
+    args: ['--ignore=E999,W504,W503,E501,B008']
     additional_dependencies:
     - flake8-bugbear
     - flake8-comprehensions
     - flake8-simplify
     verbose: true
     entry: bash -c 'flake8 "$@" || true' --
+- repo: https://github.com/codespell-project/codespell
+  rev: v2.2.5
+  hooks:
+  - id: codespell
