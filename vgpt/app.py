@@ -49,6 +49,10 @@ def main(
         True,
         help="Cache completion results.",
     ),
+    verbose: bool = typer.Option(
+        False,
+        help="Verbose output for understanding response and prompt engineering",
+    ),
 ) -> None:
     if config:
         config_flow()
@@ -60,7 +64,8 @@ def main(
         prompt = f"{prompt or ''}\n---\n{sys.stdin.read()}\n---"
 
     prompt = build_role_prompt(prompt, role_name=role)
-    typer.echo(prompt)
+    if verbose:
+        typer.echo(prompt)
 
     body = {
         "instances": [
@@ -94,10 +99,11 @@ def main(
         stream=stream,
     )
     data = response.json()
-    typer.echo()
-    typer.echo(json.dumps(data, indent=2))
-    typer.echo()
+    if verbose:
+        typer.echo(json.dumps(data, indent=2))
+
     results = data.get("predictions")[0].get("candidates")[0].get("content").strip()
+
     typer.echo(results)
 
 

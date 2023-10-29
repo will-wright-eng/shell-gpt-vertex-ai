@@ -1,0 +1,4 @@
+API_ENDPOINT=us-central1-aiplatform.googleapis.com
+PROJECT_ID=$GCP_PROJECT
+MODEL_ID=codechat-bison-32k
+GOOGLE_APPLICATION_CREDENTIALS=/Users/$USER/.config/gcloud/application_default_credentials.json

@@ -22,6 +22,53 @@ python -m pip install vgpt
 
 Shell GPT Vertex AI Command Line Interface officially supports Python 3.8+.
 
+## Getting Started
+
+- install
+
+```
+python3 -m pip install vgpt
+vgpt --help
+```
+
+- `~/.config/vgpt/config`
+
+*fill out prompts*
+
+```
+vgpt --config
+```
+
+**OR**
+
+*manually, using environment variables*
+
+```bash
+export GCP_PROJECT=your-project-name
+
+cat shell-gpt-vertex-ai/docs/config-setup | envsubst > tmp
+mkdir -p ~/.config/vgpt/
+mv tmp ~/.config/vgpt/config
+rm tmp
+```
+
+- create credentials
+
+```bash
+export GCP_PROJECT=your-project-name
+
+gcloud auth login
+gcloud config set project "$GCP_PROJECT"
+gcloud auth application-default login
+```
+
+- test
+
+```bash
+vgpt "hello world"
+# Hello, world!
+```
+
 ## Supported Features & Usage
 
 For help, run:

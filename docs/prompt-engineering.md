@@ -1,4 +1,4 @@
-# few shot training
+# prompt engineering
 
 ## install
 
