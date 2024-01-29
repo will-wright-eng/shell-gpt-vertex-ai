@@ -20,7 +20,7 @@ isort = "^5.10.1"
 black = "^23.9.1"
 
 # Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
-pytest = "^7.4.2"
+pytest = ">=7.4.2,<9.0.0"
 [tool.poetry.scripts]
 "vgpt" = "vgpt:cli"
 
